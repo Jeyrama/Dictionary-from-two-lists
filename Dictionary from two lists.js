@@ -24,12 +24,16 @@ Example 2:
 
 function createDict(keys, values) {
   let obj = {}
-  
   for (let i = 0; i < keys.length; i++) {
     obj[keys[i]] = i < values.length ? values[i] : null
   }
-  
   return obj
 }
 
 // or
+
+function createDict(keys, values){
+  return keys.reduce(function(o, v, i){
+    return o[v] = i in values ? values[i] : null, o;
+  }, {});
+}
